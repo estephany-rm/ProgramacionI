@@ -135,3 +135,28 @@ discount = 20
 # final = price - discount * price Expresion erronea
 final = price - (discount * price/100) # Expresion corregida, primero el 20% es 20/100 y entre parentesis
 print(f"Precio final: ${final}")
+
+# ✅ Autoevaluación
+# Marca los ejercicios que completaste correctamente:
+
+# Nivel 1 (Básico)
+# [O] Ejercicio 1.1
+# [O] Ejercicio 1.2
+# [O] Ejercicio 1.3
+# [O] Ejercicio 1.4
+# [O] Ejercicio 1.5
+# Nivel 2 (Intermedio)
+# [O] Ejercicio 2.1
+# [O] Ejercicio 2.2
+# [O] Ejercicio 2.3
+# [O] Ejercicio 2.4
+# [O] Ejercicio 2.5
+# Nivel 3 (Avanzado)
+# [O] Ejercicio 3.1
+# [O] Ejercicio 3.2
+# [O] Ejercicio 3.3
+# [O]Ejercicio 3.4
+# [O] Ejercicio 3.5
+# Proyecto Final
+# [O] Calculadora básica
+# [O] Calculadora avanzada
