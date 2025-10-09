@@ -1,0 +1,94 @@
+Actividad 1
+
+Integrantes:
+Maria Paulina Páez y Estephany Ruales
+
+- PROBLEMA 1:
+- Predicciones:
+  resultado1 (AND) = True. (porque 25 >= 18 es True Y tiene_licencia es True).
+  resultado2 (OR) = True. (porque 25 >= 18 es True y esto es suficiente para que el OR sea True).
+  ¿Son equivalentes?: Si porque ambas expresiones son igual a True. (True == True)
+  ¿Cuándo debería usar 'and' vs 'or'?
+  Se debería usar 'and' cuando se necesite que todas las condiciones sean verdaderas.
+  Se debería usar 'or' cuando solo se necesite que una de las condiciones sea verdadera. 
+  En este caso para ser un conductor elegible, se deberian cumplir ambas condiciones, por lo que 'and' es el operador correcto.
+
+- PROBLEMA 2
+- Predicciones:
+  resultado3 = x > 3 and x < 10 = True. (5 > 3 es True Y 5 < 10 es True Por lo tanto resultado3 es True).
+  resultado4 = 3 < x < 10 = True. Esta comparación es equivalente a la anterior.
+  ¿Son equivalentes?: Si porque ambas expresiones son igual a True. (True == True)
+  resultado5 = x < y < x =  False. Esto se evalua (5 < 7) AND (7 < 5) devuelve (True AND False), como resultado obtendremos False.
+
+- PROBLEMA 3:
+- Predicciones:
+  not a: False (Debido a que la negacion devuelve el valor contrario).
+  not b = True (Debido a que la negacion devuelve el valor contrario).
+  not a and b = False. (not tiene mayor precedencia, así que es (not a) and b  False and False que devuelve False).
+  not (a and b) = True. (El paréntesis se evalúa primero entonces a and b es False. Luego not False es igual a True).
+  ¿Por qué son diferentes?
+  Los resultados son diferentes debido a la precedencia de operadores. Los paréntesis cambian el orden de evaluación,
+  aplicando el 'not' al resultado de la expresión interna en lugar de solo al primer término.
+
+- PROBLEMA 4:
+- Predicciones:
+  lista1 == lista2 = True (Es True debido  que == compara el valor y estas listas y estas listas tienen el mismo contenido)
+  lista1 is lista2 = False (Es False debido a que is compara la identidad y estas dos listas son diferentes en memoria).
+  lista1 == lista3 = True (Es True debido a que estas listas tienen el mismo valor).
+  lista1 is lista3 = True (Es True debido a que son iguales en memoria).
+  
+- Caso especial con números:
+  a is b (con a=256, b=256) = True (Creiamos que era False debido a que is se utiliza para verificar si ocupan el mismo espacio en memoria pero nos dimos cuenta que para numeros enteros hay una excepcion cuando el numero es pequeño por eso daria True)
+  c is d (con c=257, d=257) = True (Creiamos que era False debido a que is se utiliza para verificar si ocupan el mismo espacio en memoria pero nos dimos cuenta que para numeros enteros hay una excepcion cuando el numero es pequeño por eso daria True)
+
+¿Qué diferencia hay entre '==' e 'is'?
+'==' se usa para verificar si los valores son iguales. 'is' se usa para verificar si son iguales en memoria.
+
+-PROBLEMA 5:
+- Predicciones:
+  funcion_a() and funcion_b() =  Se imprimirán "Función A ejecutada" y "Función B ejecutada". El resultado será False debido a que a return True y b return False lo que devuelve False.
+  funcion_b() and funcion_a() = Se imprimirá solo "Función B ejecutada". La función A nunca se llama debido a que la funcion retorna falso lo que impide que se ejecute la funcion a.
+ ¿Por qué no siempre se ejecutan ambas funciones?
+  Según la experimentacion con los ejemplos anteriores Python usa evaluación de "cortocircuito" es decir que en una expresión 'and', si el primer término es falso, el resultado ya se conoce (False) y el segundo término nunca se evalúa debido a que ya se conoce el resultado de la expresion and que pide que ambas condiciones sean True.
+
+- PROBLEMA 6:
+- Predicciones:
+  'manzana' in frutas: True (Esta expresion devuelve True debido a que verifica que 'manzana' se encuentre en la lista frutas lo cual es verdadero)
+  'pera' in frutas: False.  (Esta expresion devuelve False debido a que verifica que 'pera' se encuentre en la lista frutas lo cual es falso)
+  'pera' not in frutas: True.  (Esta expresion devuelve True debido a que verifica que 'pera' no se encuentre en la lista frutas lo cual es verdadero)
+  'P' in palabra: True.  (Esta expresion devuelve True debido a que verifica que 'P' se encuentre en la lista de caracteres Palabra lo cual es verdadero)
+  'p' in palabra: False.  (Esta expresion devuelve False debido a que verifica que 'p' se encuentre en la lista de caracteres Palabra lo cual es falso. Es sensible a mayusculas)
+  'th' in palabra: True.  (Esta expresion devuelve True debido a que verifica que 'th' se encuentre en la lista de caracteres Palabra lo cual es verdadero)
+  ¿Es 'in' sensible a mayúsculas/minúsculas?
+  El operador 'in' verifica la pertenencia lo que lo hace ser sensible a mayusculas y minúsculas.
+
+-PROBLEMA 7: 
+- Predicciones
+   Los valores 0, 0.0, "", [], {}, None, y False evaluarán a  False.
+   Los valores "engañosos" [''], {None: None}, y " " evaluarán a: True. 
+ ¿Por qué algunos valores vacíos evalúan a False y otros a True?
+  En Python, los contenedores vacíos (listas, diccionarios, strings vacíos), el número cero, None y False se consideran "falsy". Cualquier otra cosa es "truthy". Un contenedor que no está vacío es "truthy", incluso si los elementos que contiene son "falsy".
+
+- PROBLEMA 8:
+- Predicciones:
+  p and q or r =  True. (Se evalúa como (p and q) es False or True devuelve True).
+  p and (q or r) = True. (Se evalúa como p and (True) devuelve True).
+  (p and q) or r = True. (Es el mismo que el primero).
+
+  ¿Cómo afectan los paréntesis a estas expresiones?
+  La precedencia de operadores es 'not', luego 'and', luego 'or'. Usar paréntesis, aunque a veces no cambie el resultado, siempre hace el código más claro y menos propenso a errores de lógica.
+
+- PROBLEMA 9:
+- Predicciones:
+  Para "user123": Ambas validaciones (es_valido1 y es_valido2) darán True.
+  Para "us": Ambas validaciones darán False.
+
+  ¿Cuál forma es más clara? ¿Son equivalentes?
+  Ambas formas son equivalentes. Sin embargo, la comparación encadenada (`3 <= len(username) <= 15`) es considerada más legible y elegante en Python.
+
+- PROBLEMA 10: 
+- Predicciones:
+  ¿Puede acceder a contenido para adultos? = False (porque edad no es >= 18).
+  ¿Puede acceder a área administrativa? = False (porque admin es False).
+  ¿Puede acceder a contenido premium? = True (porque está autenticado y su suscripción es "premium").
+  Después de cambiar admin a True, ¿puede acceder al área administrativa? = True.
