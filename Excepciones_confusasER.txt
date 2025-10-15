@@ -1,0 +1,114 @@
+Estephany Ruales Mazo
+Excepciones Confusas 
+
+============================================================
+PROBLEMA 1: Capturando Todo con Except Desnudo
+------------------------------------------------------------
+
+# Preguntas y respuestas:
+1. ¿Qué pasa si el usuario presiona Ctrl+C?
+   Se captura también el KeyboardInterrupt, impidiendo que el programa se detenga correctamente.
+2. ¿Qué pasa si hay un error de variable (typo)?
+   Se produciría un NameError/UnboundLocalError; un 'except:' lo ocultaría y no se sabría cuál fue el error real.
+3. ¿Cómo afecta al debugging?
+   Hace muy difícil encontrar errores, porque no muestra el tipo ni el mensaje del error. 
+
+# Preguntas Para Pensar
+1. ¿Cómo sabrías qué salió mal en producción?
+   -> No se sabría porque no muestra el tipo de error.
+2. ¿Qué pasa si hay un error de tipeo en 'resultado'?
+   -> El programa lo oculta y no avisa.
+3. ¿Cómo afecta esto a la depuración?
+   -> Hace más dificil encontrar la causa; por otro lado usar excepciones específicas facilita la depuración.
+
+============================================================
+PROBLEMA 2: Capturando Demasiado Ampliamente
+------------------------------------------------------------
+
+ # Preguntas y respuestas:
+1. ¿Qué problema hay con capturar Exception?
+   Se manejan igual errores muy diferentes (archivo no existe, datos inválidos, división por cero).
+2. ¿Por qué es incorrecto?
+   El usuario no sabe qué tipo de error ocurrió, lo que dificulta el diagnóstico.
+
+# Preguntas Para Pensar
+1. ¿Qué tipos específicos de errores pueden ocurrir?
+   -> ValueError, FileNotFoundError, ZeroDivisionError.
+2. ¿Deberían manejarse todos de la misma manera?
+   -> No, Cada error necesita una respuesta distinta (abrir archivo, validar datos, etc.).
+3. ¿Qué información se pierde al capturar todo?
+   -> Se pierde el tipo exacto de excepción y el traceback, que ayudan a saber la causa.
+
+============================================================
+PROBLEMA 3: Ignorando Errores Silenciosamente
+------------------------------------------------------------
+# Pregunta: ¿Por qué es peligroso?
+   Porque si ocurre un error, el usuario creerá que el archivo fue guardado aunque no se haya guardado.
+   Los errores se deben registrar o notificar.
+
+# Preguntas Para Pensar
+1. ¿Qué debería suceder cuando falla el guardado?
+   -> Deberia informar al usuario y/o devolver un error; registrar el fallo para depuración.
+2. ¿Cómo informarías al usuario?
+   -> Mostrando un mensaje claro o lanzar una excepción que el llamador pueda manejar.
+3. ¿Es este error algo que deberías manejar?
+   -> Sí si se puede arreglar; si no, propaga la excepción para quien llamó.
+
+============================================================
+PROBLEMA 4: Confusión con Else y Finally
+------------------------------------------------------------
+# Preguntas y respuestas:
+¿Cuándo se ejecuta else?
+   Solo si no ocurre ninguna excepción.
+¿Cuándo se ejecuta finally?
+   Siempre, ocurra o no un error.
+
+# Preguntas Para Pensar
+1. ¿En qué se diferencia else de finally?
+   -> else se ejecuta solo si no ocurre excepción en try; finally se ejecuta siempre (si hay o no excepción).
+2. ¿Cuándo usarías cada uno?
+   -> Else para código que solo debe correr si todo salió bien; finally para liberar recursos siempre (cerrar archivos).
+3. ¿Qué pasa si hay un return en try?
+   -> El bloque finally se ejecuta antes de devolver el valor.
+
+============================================================
+PROBLEMA 5: Uso Incorrecto de Raise
+------------------------------------------------------------
+# Preguntas Para Pensar
+1. ¿Qué tipo de excepción sería más apropiado?
+   -> Una más específica, como ValueError o TypeError.
+2. ¿Qué información debería incluir el mensaje?
+   -> Mensaje claro que explique qué valor o qué condición falló (ej. 'edad < 0: -3').
+3. ¿Cómo ayuda esto a quien llama la función?
+   -> Le permite entender el problema y decidir cómo manejarlo (reintentar, corregir entrada, etc.).
+
+============================================================
+PROBLEMA 6: No Re-lanzar Apropiadamente
+------------------------------------------------------------
+# Preguntas:
+1. ¿Cuál enfoque es mejor?
+   Usualmente dentro del bucle, así un error no detiene todo.
+2. ¿Depende del requerimiento?
+   Sí, si el error debe detener el proceso, se usa fuera.
+
+# Preguntas Para Pensar
+1. ¿Cuándo deberías capturar y manejar?
+   -> Cuando se puede corregir o finalizar la operación razonablemente en ese nivel.
+2. ¿Cuándo deberías capturar, registrar y re-lanzar?
+   -> Cuando se necesita dejar registro local pero la decisión final la debe tomar el llamador.
+3. ¿Cuándo NO deberías capturar en absoluto?
+   -> Si no se puede manejar el error ni aportar información útil; deja que suba niveles superiores.
+
+============================================================
+PROBLEMA 7: Excepciones en Bucles
+------------------------------------------------------------
+#  Pregunta: ¿Cuándo es necesario relanzar?
+   Cuando el error debe ser manejado por una capa superior como la lógica del programa.
+
+# Preguntas Para Pensar
+1. ¿Debería un error detener todo el proceso?
+   -> Depende; si los elementos son independientes, conviene registrar el error y continuar.
+2. ¿Cómo reportarías múltiples errores?
+   -> Guardandolos en una lista o escribiendo un log con los fallos.
+3. ¿Qué pasa si TODOS los elementos fallan?
+   -> Se debe avisar que no se procesó nada y manejar ese caso ya sea abortando o reportando al usuario.
