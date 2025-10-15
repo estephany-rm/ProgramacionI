@@ -254,7 +254,7 @@ class Inventario:
 
 
 # =========================================================================
-# Bloque de pruebas básicas (se ejecuta si se corre el archivo directamente)
+# Bloque de pruebas
 # =========================================================================
 if __name__ == "__main__":
     print("\n--- Pruebas rápidas de funciones implementadas ---\n")
