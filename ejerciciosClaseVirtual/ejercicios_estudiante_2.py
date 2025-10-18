@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-"""
-EJERCICIOS PARA ESTUDIANTES - SOLUCIONES
-Archivo resuelto: ejercicios_estudiante_2_solutions.py
-"""
+# Estephany Ruales Mazo
 
 # ===========================================================================
 # Ejercicio 1: Encuentra y arregla el except desnudo
