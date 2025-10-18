@@ -1,9 +1,4 @@
-#!/usr/bin/env python3
-"""
-ESTRUCTURAS CONDICIONALES - VERSIÓN RESUELTA Y LIGERAMENTE MEJORADA
-Este archivo contiene la versión interactiva original, con comentarios aclaratorios
-y pequeñas mejoras para que se ejecute sin cambios interactivos obligatorios.
-"""
+# Estephany Ruales Mazo
 import os
 
 def limpiar_pantalla():
@@ -13,7 +8,6 @@ def esperar_enter(mensaje="Presiona Enter para continuar..."):
     try:
         input(f"\n{mensaje}")
     except EOFError:
-        # Cuando se ejecute en entornos no interactivos, continuamos sin bloquear.
         print()
 
 def mostrar_titulo(texto):
@@ -95,7 +89,6 @@ def main():
     limpiar_pantalla()
     mostrar_titulo("EJERCICIO 5: ORDEN DE CONDICIONES")
     nota = 85
-    # Código corregido: primero comprobar rangos más altos
     if nota >= 90:
         print("Sobresaliente")
     elif nota >= 70:
@@ -132,11 +125,7 @@ def main():
     esperar_enter()
 
     limpiar_pantalla()
-    mostrar_titulo("CONCLUSIÓN")
-    print("Resumen: comprendimos indentación, operadores, truthy/falsy, anidación, orden y 'is' vs '=='.")
     esperar_enter("Presiona Enter para finalizar...")
     limpiar_pantalla()
-    print("¡Gracias por participar!")
-
 if __name__ == "__main__":
     main()
